@@ -1,23 +1,82 @@
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import Home from './pages/Home';
+import Projects from './pages/Projects';
+import Todos from './pages/Todos';
+import Users from './pages/Users';
+import Questions from './pages/Questions';
+import Quizzes from './pages/Quizzes';
+import Exercises from './pages/Exercises';
+
+const App = () => {
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+    <Router>
+          <div>
+            <nav>
+              <ul>
+                <li>
+                  <Link to="/">Home</Link>
+                </li>
+                <li>
+                  <Link to="/questions">Questions</Link>
+                </li>
+                <li>
+                  <Link to="/quizzes">Quizzes</Link>
+                </li>
+                <li>
+                  <Link to="/exercises">Exercises</Link>
+                </li>
+                <li>
+                  <Link to="/projects">Projects</Link>
+                </li>
+                <li>
+                  <Link to="/users">Users</Link>
+                </li>
+                <li>
+                  <Link to="/todos">Todos</Link>
+                </li>
+              </ul>
+            </nav>
+
+            {/* A <Switch> looks through its children <Route>s and
+                renders the first one that matches the current URL. */}
+            <Switch>
+              <Route path="/questions">
+                <Questions/>
+              </Route>
+              <Route path="/quizzes">
+                <Quizzes/>
+              </Route>
+              <Route path="/exercises">
+                <Exercises/>
+              </Route>
+              <Route path="/projects">
+                <Projects/>
+              </Route>
+              <Route path="/users">
+                <Users />
+              </Route>
+              <Route path="/todos">
+                <Todos/>
+              </Route>
+              <Route path="/">
+                <Home />
+              </Route>
+            </Switch>
+          </div>
+        </Router>
+
+      
     </div>
   );
 }
